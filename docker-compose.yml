@@ -3,10 +3,10 @@ services:
   php7-apache:
     image: ebey/php7-apache
     environment:
-      VIRTUAL_HOST: example.com
+      VIRTUAL_HOST: ${HOST}
       VIRTUAL_PORT: 80
-      LETSENCRYPT_HOST: example.com
-      LETSENCRYPT_EMAIL: info@example.com
+      LETSENCRYPT_HOST: ${LETSENCRYPT_HOST}
+      LETSENCRYPT_EMAIL: ${LETSENCRYPT_MAIL}
     volumes:
       - ./html:/var/www/html/
     restart: always
@@ -17,7 +17,7 @@ services:
     restart: always
     image: mariadb
     environment:
-      MYSQL_ROOT_PASSWORD: pass
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
     volumes:
       - ./db:/var/lib/mysql/
     networks:
