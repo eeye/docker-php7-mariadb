@@ -11,7 +11,7 @@ services:
       - ./html:/var/www/html/
     restart: always
     networks:
-      - nginx-network
+      - nginx-proxy
       
   mysql:
     restart: always
@@ -21,4 +21,9 @@ services:
     volumes:
       - ./db:/var/lib/mysql/
     networks:
-      - nginx-network
+      - nginx-proxy
+    
+networks:
+  nginx-proxy:
+    external:
+      name: nginx-proxy
